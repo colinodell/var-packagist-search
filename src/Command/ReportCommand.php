@@ -135,8 +135,13 @@ class ReportCommand extends Command
         $rows['packagesWithBoth'][] = number_format($stats['packagesWithBoth'] / $stats['totalPackages'] * 100) . '%';
         $rows['packagesWithNeither'][] = number_format($stats['packagesWithNeither'] / $stats['totalPackages'] * 100) . '%';
 
-        $rows['varUsagesSelf'][] = number_format($stats['varUsagesSelf'] / $stats['totalVars'] * 100) . '%';
-        $rows['varUsagesDeps'][] = number_format($stats['varUsagesDeps'] / $stats['totalVars'] * 100) . '%';
+        if ($stats['totalVars']) {
+            $rows['varUsagesSelf'][] = number_format($stats['varUsagesSelf'] / $stats['totalVars'] * 100) . '%';
+            $rows['varUsagesDeps'][] = number_format($stats['varUsagesDeps'] / $stats['totalVars'] * 100) . '%';
+        } else {
+            $rows['varUsagesSelf'][] = '';
+            $rows['varUsagesDeps'][] = '';
+        }
 
         $rows['packagesWithSelfVarUsage'][] = number_format($stats['packagesWithSelfVarUsage'] / $stats['totalPackages'] * 100) . '%';
         $rows['packagesWithDepVarUsage'][] = number_format($stats['packagesWithDepVarUsage'] / $stats['totalPackages'] * 100) . '%';

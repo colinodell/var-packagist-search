@@ -50,8 +50,8 @@ class InstallPackageCommand extends Command
                 ->setClassMapAuthoritative(false)
                 ->setUpdate(true)
                 ->setUpdateWhitelist([$packageName])
-                ->setWhitelistDependencies(true)
-                ->setIgnorePlatformRequirements(true)
+                ->setWhitelistDependencies(false)
+                ->setIgnorePlatformRequirements(false)
             ;
 
             $status = $install->run();
